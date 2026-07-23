@@ -1,0 +1,25 @@
+class Solution {
+    public int islandPerimeter(int[][] grid) {
+        int rows = grid.length;
+        int cols = grid[0].length;
+        int landCount = 0;
+        int sharedEdges = 0;
+
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                if (grid[r][c] == 1) {
+                    landCount++;
+
+                    if (r > 0 && grid[r - 1][c] == 1) {
+                        sharedEdges++;
+                    }
+                    if (c > 0 && grid[r][c - 1] == 1) {
+                        sharedEdges++;
+                    }
+                }
+            }
+        }
+
+        return (landCount * 4) - (sharedEdges * 2);
+    }
+}
